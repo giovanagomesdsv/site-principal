@@ -59,47 +59,61 @@ include "conexao.php";
 
     <!--Terceira tela___________________________________________________________________-->
     <section>
-        <!--Barra de pesquisa-->
-        <div class="busca">
-            <form action="" method="GET">
-                <input type="text" name="busca" placeholder="Busque por resenha ou autor...">
-                <button type="submit">Buscar</button>
+
+        <!-- Barra de Pesquisa -->
+        <div class="search-container">
+            <form method="POST" action="">
+                <input type="text" name="search" placeholder="Digite o título do artigo..." required>
+                <button type="submit">Pesquisar</button>
             </form>
         </div>
 
         <div class="pesquisa">
             <?php
+            // Pesquisa por slug (exibe um artigo específico)
+            if (isset($_GET['slug'])) {
+                $slug = $_GET['slug'];
 
-            if ( !isset($_GET['busca']) || empty($_GET['busca']) ) {
-                echo "
-                <div class='resultado'>
-                 
-                </div>
-                ";
-            } else {
-                $pesquisa = $conexao->real_escape_string($_GET['busca']);
+                $stmt = $conexao->prepare("SELECT * FROM resenha WHERE slug = ?");
+                $stmt->bind_param("s", $slug);
+                $stmt->execute();
 
-                $code = "SELECT * FROM resenha  WHERE titulo LIKE '%$pesquisa%'";
+                $result = $stmt->get_result();
+                $artigo = $result->fetch_assoc();
 
-                //executa
-                $consulta = $conexao->query($code) or die("Erro ao consultar". $conexao->error);
-
-                if ($consulta -> num_rows == 0) {
-                    echo "
-                    <div class='resultado'>
-                       <h3>Nenhum resultado encontrado<h3>
-                    </div>
-                       ";
+                if ($artigo) {
+                    echo "<h1>" . htmlspecialchars($artigo['titulo']) . "</h1>";
+                    echo "<p>" . nl2br(htmlspecialchars($artigo['conteudo'])) . "</p>";
                 } else {
-                    while ($linha = mysqli_fetch_array($consulta)) {
-                        echo "
-                         <div>
-                           <img src='{$linha['imagem_url']}' alt='Foto do livro'>
-                           <h3>{$linha['titulo']}</h3>
-                </div>
-                        ";
-                    }
+                    echo "Artigo não encontrado.";
                 }
+
+                $stmt->close();
+            }
+            // Pesquisa por termo (exibe resultados da busca)
+            elseif (isset($_POST['search'])) {
+                $search = '%' . $_POST['search'] . '%';
+
+                $stmt = $conexao->prepare("SELECT * FROM resenha WHERE titulo LIKE ?");
+                $stmt->bind_param("s", $search);
+                $stmt->execute();
+
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    echo "<div class='card-container'>";
+                    while ($artigo = $result->fetch_assoc()) {
+                        echo "<div class='card'>";
+                        echo "<h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>";
+                        echo "<p>" . substr(htmlspecialchars($artigo['conteudo']), 0, 100) . "...</p>";
+                        echo "</div>";
+                    }
+                    echo "</div>";
+                } else {
+                    echo "Nenhum artigo encontrado para a pesquisa.";
+                }
+
+                $stmt->close();
             }
             ?>
         </div>
