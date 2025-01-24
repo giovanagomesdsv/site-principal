@@ -54,6 +54,18 @@ include "conexao.php";
 
     <!--Segunda tela___________________________________________________________________-->
     <section>
+        <?php 
+        $consulta = "SELECT * FROM parceria";
+
+        if ($resultado = mysqli_query($conexao, $consulta)) {
+            while ($parceria = mysqli_fetch_array($resultado)){
+                echo "
+                  <img src='{$parceria['foto_url']}' alt=''>
+                ";
+            } 
+        }
+        ?>
+       
 
     </section>
 
