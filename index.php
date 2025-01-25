@@ -54,18 +54,18 @@ include "conexao.php";
 
     <!--Segunda tela___________________________________________________________________-->
     <section>
-        <?php 
+        <?php
         $consulta = "SELECT * FROM parceria";
 
         if ($resultado = mysqli_query($conexao, $consulta)) {
-            while ($parceria = mysqli_fetch_array($resultado)){
+            while ($parceria = mysqli_fetch_array($resultado)) {
                 echo "
-                  <img src='{$parceria['foto_url']}' alt=''>
+                  <p>{$parceria['nome']}</p>
                 ";
-            } 
+            }
         }
         ?>
-       
+
 
     </section>
 
@@ -95,7 +95,7 @@ include "conexao.php";
 
                 if ($artigo) {
                     echo "<h1>" . htmlspecialchars($artigo['titulo']) . "</h1>";
-                    echo "<p>" . nl2br(htmlspecialchars($artigo['conteudo'])) . "</p>";
+                    echo "<p>" . nl2br(htmlspecialchars($artigo['sinopse'])) . "</p>";
                 } else {
                     echo "Artigo não encontrado.";
                 }
@@ -117,7 +117,7 @@ include "conexao.php";
                     while ($artigo = $result->fetch_assoc()) {
                         echo "<div class='card'>";
                         echo "<h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>";
-                        echo "<p>" . substr(htmlspecialchars($artigo['conteudo']), 0, 100) . "...</p>";
+                        echo "<p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>";
                         echo "</div>";
                     }
                     echo "</div>";
@@ -129,6 +129,168 @@ include "conexao.php";
             }
             ?>
         </div>
+
+        <!-- Para as resenhas -->
+        <main>
+
+            <!-- Clássicos -->
+            <!--div container das resenhas-->
+            <div class="classicos">
+                <?php
+                $consulta_classicos = "SELECT * FROM resenha WHERE genero = 'classicos' ORDER BY data_publicacao DESC LIMIT 6";
+
+                if ($resultado_classicos = mysqli_query($conexao,  $consulta_classicos)) {
+                    while ($artigo = mysqli_fetch_array($resultado_classicos)) {
+
+                        // div de cada resenha
+
+                        echo "<div>
+                           <img src='{$artigo['foto_url']}' alt=''>
+                           <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
+                        </div>";
+                    }
+                }
+
+
+                ?>
+            </div>
+           
+
+            <!-- Terror -->
+            <!--div container das resenhas-->
+            <div class="terror">
+                <?php
+                $consulta_terror = "SELECT * FROM resenha WHERE genero = 'terror' ORDER BY data_publicacao DESC LIMIT 6";
+
+                if ($resultado = mysqli_query($conexao,  $consulta_terror)) {
+                    while ($artigo = mysqli_fetch_array($resultado)) {
+
+                        // div de cada resenha
+
+                        echo "<div>";
+                        echo "<h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>";
+                        echo "<p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>";
+                        echo "</div>";
+                    }
+                }
+
+
+                ?>
+            </div>
+
+            <!-- Suspense e mistério -->
+            <!--div container das resenhas-->
+            <div class="suspense">
+                <?php
+                $consulta_suspense = "SELECT * FROM resenha WHERE genero = 'suspense e mistério' ORDER BY data_publicacao DESC LIMIT 6";
+
+                if ($resultado_suspense = mysqli_query($conexao,  $consulta_suspense)) {
+                    while ($artigo = mysqli_fetch_array($resultado_suspense)) {
+
+                        // div de cada resenha
+
+                        echo "<div>";
+                        echo "<h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>";
+                        echo "<p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>";
+                        echo "</div>";
+                    }
+                }
+
+
+                ?>
+            </div>
+
+            <!-- Romance -->
+            <!--div container das resenhas-->
+            <div class="romance">
+                <?php
+                $consulta_romance = "SELECT * FROM resenha WHERE genero = 'romance' ORDER BY data_publicacao DESC LIMIT 6";
+
+                if ($resultado_romance = mysqli_query($conexao,  $consulta_romance)) {
+                    while ($artigo = mysqli_fetch_array($resultado_romance)) {
+
+                        // div de cada resenha
+
+                        echo "<div>";
+                        echo "<h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>";
+                        echo "<p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>";
+                        echo "</div>";
+                    }
+                }
+
+
+                ?>
+            </div>
+
+            <!-- Ficção e fantasia -->
+            <!--div container das resenhas-->
+            <div class="ficcao">
+                <?php
+                $consulta_ficcao = "SELECT * FROM resenha WHERE genero = 'ficção e fantasia' ORDER BY data_publicacao DESC LIMIT 6";
+
+                if ($resultado_ficcao = mysqli_query($conexao,  $consulta_ficcao)) {
+                    while ($artigo = mysqli_fetch_array($resultado_ficcao)) {
+
+                        // div de cada resenha
+
+                        echo "<div>";
+                        echo "<h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>";
+                        echo "<p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>";
+                        echo "</div>";
+                    }
+                }
+
+
+                ?>
+            </div>
+
+            <!-- Aventura -->
+            <!--div container das resenhas-->
+            <div class="aventura">
+                <?php
+                $consulta_aventura = "SELECT * FROM resenha WHERE genero = 'aventura' ORDER BY data_publicacao DESC LIMIT 6";
+
+                if ($resultado_aventura = mysqli_query($conexao,  $consulta_aventura)) {
+                    while ($artigo = mysqli_fetch_array($resultado_aventura)) {
+
+                        // div de cada resenha
+
+                        echo "<div>";
+                        echo "<h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>";
+                        echo "<p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>";
+                        echo "</div>";
+                    }
+                }
+
+
+                ?>
+            </div>
+
+            <!-- Drama -->
+            <!--div container das resenhas-->
+            <div class="drama">
+                <?php
+                $consulta_drama = "SELECT * FROM resenha WHERE genero = 'drama' ORDER BY data_publicacao DESC LIMIT 6";
+
+                if ($resultado_drama = mysqli_query($conexao,  $consulta_drama)) {
+                    while ($artigo = mysqli_fetch_array($resultado_drama)) {
+
+                        // div de cada resenha
+
+                        echo "<div>";
+                        echo "<h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>";
+                        echo "<p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>";
+                        echo "</div>";
+                    }
+                }
+
+
+                ?>
+            </div>
+
+
+        </main>
+
 
     </section>
 
