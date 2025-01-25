@@ -9,7 +9,7 @@ include "conexao.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>BIBLIÓFILOS Community</title>
+    <title>BIBLIÓFILOS Community - HOME</title>
 </head>
 
 <body>
@@ -137,7 +137,7 @@ include "conexao.php";
             <!--div container das resenhas-->
             <div class="classicos">
                 <?php
-                $consulta_classicos = "SELECT * FROM resenha WHERE genero = 'classicos' ORDER BY data_publicacao DESC LIMIT 6";
+                $consulta_classicos = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Clássicos' ORDER BY data_publicacao DESC LIMIT 6";
 
                 if ($resultado_classicos = mysqli_query($conexao,  $consulta_classicos)) {
                     while ($artigo = mysqli_fetch_array($resultado_classicos)) {
@@ -147,6 +147,7 @@ include "conexao.php";
                         echo "<div>
                            <img src='{$artigo['foto_url']}' alt=''>
                            <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
+                           <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                         </div>";
                     }
                 }
@@ -160,17 +161,20 @@ include "conexao.php";
             <!--div container das resenhas-->
             <div class="terror">
                 <?php
-                $consulta_terror = "SELECT * FROM resenha WHERE genero = 'terror' ORDER BY data_publicacao DESC LIMIT 6";
+                $consulta_terror = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo, resenha.sinopse FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Terror' ORDER BY data_publicacao DESC LIMIT 6";
 
                 if ($resultado = mysqli_query($conexao,  $consulta_terror)) {
                     while ($artigo = mysqli_fetch_array($resultado)) {
 
                         // div de cada resenha
 
-                        echo "<div>";
-                        echo "<h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>";
-                        echo "<p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>";
-                        echo "</div>";
+                        echo "<div>
+                        <img src='{$artigo['foto_url']}' alt=''>
+                        <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
+                        <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
+                        <p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>
+                       
+                     </div>";
                     }
                 }
 
@@ -182,17 +186,18 @@ include "conexao.php";
             <!--div container das resenhas-->
             <div class="suspense">
                 <?php
-                $consulta_suspense = "SELECT * FROM resenha WHERE genero = 'suspense e mistério' ORDER BY data_publicacao DESC LIMIT 6";
+                $consulta_suspense = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo, resenha.sinopse FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Suspense e mistério' ORDER BY data_publicacao DESC LIMIT 6";
 
                 if ($resultado_suspense = mysqli_query($conexao,  $consulta_suspense)) {
                     while ($artigo = mysqli_fetch_array($resultado_suspense)) {
 
                         // div de cada resenha
 
-                        echo "<div>";
-                        echo "<h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>";
-                        echo "<p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>";
-                        echo "</div>";
+                        echo "<div>
+                        <img src='{$artigo['foto_url']}' alt=''>
+                        <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
+                        <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
+                     </div>";
                     }
                 }
 
@@ -204,17 +209,19 @@ include "conexao.php";
             <!--div container das resenhas-->
             <div class="romance">
                 <?php
-                $consulta_romance = "SELECT * FROM resenha WHERE genero = 'romance' ORDER BY data_publicacao DESC LIMIT 6";
+                $consulta_romance = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo, resenha.sinopse FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Romance' ORDER BY data_publicacao DESC LIMIT 6";
 
                 if ($resultado_romance = mysqli_query($conexao,  $consulta_romance)) {
                     while ($artigo = mysqli_fetch_array($resultado_romance)) {
 
                         // div de cada resenha
 
-                        echo "<div>";
-                        echo "<h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>";
-                        echo "<p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>";
-                        echo "</div>";
+                        echo "<div>
+                        <img src='{$artigo['foto_url']}' alt=''>
+                        <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
+                        <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
+                         <p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>
+                     </div>";
                     }
                 }
 
@@ -226,17 +233,18 @@ include "conexao.php";
             <!--div container das resenhas-->
             <div class="ficcao">
                 <?php
-                $consulta_ficcao = "SELECT * FROM resenha WHERE genero = 'ficção e fantasia' ORDER BY data_publicacao DESC LIMIT 6";
+                $consulta_ficcao = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo, resenha.sinopse FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Fantasia e Ficção' ORDER BY data_publicacao DESC LIMIT 6";
 
                 if ($resultado_ficcao = mysqli_query($conexao,  $consulta_ficcao)) {
                     while ($artigo = mysqli_fetch_array($resultado_ficcao)) {
 
                         // div de cada resenha
 
-                        echo "<div>";
-                        echo "<h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>";
-                        echo "<p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>";
-                        echo "</div>";
+                        echo "<div>
+                        <img src='{$artigo['foto_url']}' alt=''>
+                         <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
+                        <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2> 
+                     </div>";
                     }
                 }
 
@@ -248,17 +256,19 @@ include "conexao.php";
             <!--div container das resenhas-->
             <div class="aventura">
                 <?php
-                $consulta_aventura = "SELECT * FROM resenha WHERE genero = 'aventura' ORDER BY data_publicacao DESC LIMIT 6";
+                $consulta_aventura = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo, resenha.sinopse FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'aventura' ORDER BY data_publicacao DESC LIMIT 6";
 
                 if ($resultado_aventura = mysqli_query($conexao,  $consulta_aventura)) {
                     while ($artigo = mysqli_fetch_array($resultado_aventura)) {
 
                         // div de cada resenha
 
-                        echo "<div>";
-                        echo "<h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>";
-                        echo "<p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>";
-                        echo "</div>";
+                        echo "<div>
+                        <img src='{$artigo['foto_url']}' alt=''>
+                        <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
+                        <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
+                         <p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>
+                     </div>";
                     }
                 }
 
@@ -270,17 +280,18 @@ include "conexao.php";
             <!--div container das resenhas-->
             <div class="drama">
                 <?php
-                $consulta_drama = "SELECT * FROM resenha WHERE genero = 'drama' ORDER BY data_publicacao DESC LIMIT 6";
+                $consulta_drama = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo, resenha.sinopse FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'drama' ORDER BY data_publicacao DESC LIMIT 6";
 
                 if ($resultado_drama = mysqli_query($conexao,  $consulta_drama)) {
                     while ($artigo = mysqli_fetch_array($resultado_drama)) {
 
                         // div de cada resenha
 
-                        echo "<div>";
-                        echo "<h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>";
-                        echo "<p>" . substr(htmlspecialchars($artigo['sinopse']), 0, 100) . "...</p>";
-                        echo "</div>";
+                        echo "<div>
+                        <img src='{$artigo['foto_url']}' alt=''>
+                        <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2> 
+                         <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
+                     </div>";
                     }
                 }
 
