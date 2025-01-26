@@ -4,7 +4,7 @@ include "../conexao.php";
 
 $dado = $_GET['id'];
 
-$select = "SELECT titulo, nome, sinopse, conteudo, resenha.foto_url as resenha_foto, escritor.foto_url as escritor_foto FROM resenha INNER JOIN escritor ON resenha.id_escritor = escritor.id_escritor WHERE resenha.slug='$dado'";
+$select = "SELECT titulo, nome, sinopse, conteudo, resenha.path as resenha_foto, escritor.path as escritor_foto FROM resenha INNER JOIN escritor ON resenha.id_escritor = escritor.id_escritor WHERE resenha.slug='$dado'";
 
 if ($resultado = mysqli_query($conexao, $select)) {
     while ($resenha = mysqli_fetch_array($resultado)) {
@@ -24,8 +24,8 @@ if ($resultado = mysqli_query($conexao, $select)) {
       <p>SINOPSE: {$resenha['sinopse']}</p>
       <p>CONTEÚDO: {$resenha['conteudo']}</p>
 
-       <img src='{$resenha['resenha_foto']}' alt=''>
-       <img src='{$resenha['escritor_foto']}' alt=''>
+       <img src='../../administrador/resenha/{$resenha['resenha_foto']}' alt=''>
+       <img src='../../administrador/autores/{$resenha['escritor_foto']}' alt=''>
 
 
     

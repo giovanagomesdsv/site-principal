@@ -23,6 +23,9 @@ if ($resultado = mysqli_query($conexao, $select)) {
       
       <p>{$livro['preco']}</p>
 
+          <img src='../../gerenciador-estoque/cadastro de livros/' alt=''>
+
+
 </body>
 </html>
 
@@ -32,3 +35,4 @@ if ($resultado = mysqli_query($conexao, $select)) {
 
 
 ?>
+

@@ -28,7 +28,6 @@ include "../conexao.php";
             </form>
         </div>
        
-
         <div class="pesquisa">
             <?php
             // Pesquisa por slug (exibe um artigo específico)
@@ -44,7 +43,7 @@ include "../conexao.php";
 
                 if ($linha) {
                     echo "<h1>" . htmlspecialchars($linha['nome']) . "</h1>";
-                    echo " <img src='{$linha['foto_url']}' alt=''>";
+                    echo " <img src='{$linha['path']}' alt=''>";
                 } else {
                     echo "Artigo não encontrado.";
                 }

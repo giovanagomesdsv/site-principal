@@ -95,85 +95,85 @@ include "../conexao.php";
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (isset($_POST['classicos'])) {
-                $sql = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Clássicos' ORDER BY data_publicacao DESC ";
+                $sql = "SELECT resenha.path, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Clássicos' ORDER BY data_publicacao DESC ";
 
                 $resultado = mysqli_query($conexao, $sql);
 
                 while ($artigo = mysqli_fetch_array($resultado)) {
                     echo "<div>
-                           <img src='{$artigo['foto_url']}' alt=''>
+                           <img src='../../administrador/resenha/{$artigo['path']}' alt=''>
                            <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
                            <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                         </div>";
                 }
             } elseif (isset($_POST['terror'])) {
-                $sql = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Terror' ORDER BY data_publicacao DESC ";
+                $sql = "SELECT resenha.path, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Terror' ORDER BY data_publicacao DESC ";
 
                 $resultado = mysqli_query($conexao, $sql);
 
                 while ($artigo = mysqli_fetch_array($resultado)) {
                     echo "<div>
-                           <img src='{$artigo['foto_url']}' alt=''>
+                           <img src='../../administrador/resenha/{$artigo['path']}' alt=''>
                            <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
                            <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                         </div>";
                 }
             } elseif (isset($_POST['suspense'])) {
-                $sql = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Suspense e mistério' ORDER BY data_publicacao DESC ";
+                $sql = "SELECT resenha.path, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Suspense e mistério' ORDER BY data_publicacao DESC ";
 
                 $resultado = mysqli_query($conexao, $sql);
 
                 while ($artigo = mysqli_fetch_array($resultado)) {
                     echo "<div>
-                           <img src='{$artigo['foto_url']}' alt=''>
+                           <img src='../../administrador/resenha/{$artigo['path']}' alt=''>
                            <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
                            <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                         </div>";
                 }
             } elseif (isset($_POST['romance'])) {
-                $sql = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Romance' ORDER BY data_publicacao DESC ";
+                $sql = "SELECT resenha.path, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Romance' ORDER BY data_publicacao DESC ";
 
                 $resultado = mysqli_query($conexao, $sql);
 
                 while ($artigo = mysqli_fetch_array($resultado)) {
                     echo "<div>
-                           <img src='{$artigo['foto_url']}' alt=''>
+                           <img src='../../administrador/resenha/{$artigo['path']}' alt=''>
                            <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
                            <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                         </div>";
                 }
             } elseif (isset($_POST['ficcao'])) {
-                $sql = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Fantasia e Ficção' ORDER BY data_publicacao DESC ";
+                $sql = "SELECT resenha.path, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Fantasia e Ficção' ORDER BY data_publicacao DESC ";
 
                 $resultado = mysqli_query($conexao, $sql);
 
                 while ($artigo = mysqli_fetch_array($resultado)) {
                     echo "<div>
-                           <img src='{$artigo['foto_url']}' alt=''>
+                           <img src='../../administrador/resenha/{$artigo['path']}' alt=''>
                            <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
                            <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                         </div>";
                 }
             } elseif (isset($_POST['aventura'])) {
-                $sql = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Aventura' ORDER BY data_publicacao DESC ";
+                $sql = "SELECT resenha.path, resenha.path, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Aventura' ORDER BY data_publicacao DESC ";
 
                 $resultado = mysqli_query($conexao, $sql);
 
                 while ($artigo = mysqli_fetch_array($resultado)) {
                     echo "<div>
-                           <img src='{$artigo['foto_url']}' alt=''>
+                           <img src='../../administrador/resenha/{$artigo['path']}' alt=''>
                            <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
                            <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                         </div>";
                 }
             } elseif (isset($_POST['drama'])) {
-                $sql = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Drama' ORDER BY data_publicacao DESC ";
+                $sql = "SELECT resenha.path, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha WHERE genero = 'Drama' ORDER BY data_publicacao DESC ";
 
                 $resultado = mysqli_query($conexao, $sql);
 
                 while ($artigo = mysqli_fetch_array($resultado)) {
                     echo "<div>
-                           <img src='{$artigo['foto_url']}' alt=''>
+                           <img src='../../administrador/resenha/{$artigo['path']}' alt=''>
                            <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
                            <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                         </div>";
@@ -183,9 +183,10 @@ include "../conexao.php";
         ?>
 
         <section>
+           
             <h3>Todas as resenhas</h3>
             <?php
-            $consulta = "SELECT resenha.foto_url, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo, genero FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha ORDER BY data_publicacao DESC";
+            $consulta = "SELECT resenha.path, resenha.slug, resenha.titulo, resenha.data_publicacao, autor_resenha.pseudonimo, genero FROM resenha INNER JOIN autor_resenha ON resenha.id_autor_resenha = autor_resenha.id_autor_resenha ORDER BY data_publicacao DESC";
             $result = mysqli_query($conexao, $consulta);
 
             if (mysqli_num_rows($result) > 0) {
@@ -193,43 +194,43 @@ include "../conexao.php";
 
                     if ($artigo["genero"] == "Clássicos") {
                         echo "<div>
-                           <img src='{$artigo['foto_url']}' alt=''>
+                           <img src='../../administrador/resenha/{$artigo['path']}' alt=''>
                            <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
                            <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                         </div>";
                     } elseif ($artigo["genero"] == "Terror") {
                         echo "<div>
-                        <img src='{$artigo['foto_url']}' alt=''>
+                        <img src='../../administrador/resenha/{$artigo['path']}' alt=''>
                         <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
                         <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                      </div>";
                     } elseif ($artigo["genero"] == "Suspense e mistério") {
                         echo "<div>
-                        <img src='{$artigo['foto_url']}' alt=''>
+                        <img src='../../administrador/resenha/{$artigo['path']}' alt=''>
                         <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
                         <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                      </div>";
                     } elseif ($artigo["genero"] == "Romance") {
                         echo "<div>
-                        <img src='{$artigo['foto_url']}' alt=''>
+                        <img src='../../administrador/resenha/{$artigo['path']}' alt=''>
                         <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
                         <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                      </div>";
                     } elseif ($artigo["genero"] == "Fantasia e Ficção") {
                         echo "<div>
-                        <img src='{$artigo['foto_url']}' alt=''>
+                        <img src='../../administrador/resenha/{$artigo['path']}' alt=''>
                         <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
                         <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                      </div>";
                     } elseif ($artigo["genero"] == "Aventura") {
                         echo "<div>
-                        <img src='{$artigo['foto_url']}' alt=''>
+                        <img src='../../administrador/resenha/{$artigo['path']}' alt=''>
                         <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
                         <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                      </div>";
                     } elseif ($artigo["genero"] == "Drama") {
                         echo "<div>
-                        <img src='{$artigo['foto_url']}' alt=''>
+                        <img src='../../administrador/resenha/{$artigo['path']}' alt=''>
                         <h2><a href='http://localhost/TCC/site-principal/resenha-resultado/resenha.php?id={$artigo['slug']}'>" . htmlspecialchars($artigo['titulo']) . "</a></h2>
                         <p>{$artigo['pseudonimo']} ({$artigo['data_publicacao']})</p>
                      </div>";

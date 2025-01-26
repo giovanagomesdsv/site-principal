@@ -4,7 +4,7 @@ include "../conexao.php";
 
 $dado = $_GET['id'];
 
-$select = "SELECT escritor.foto_url as esc_foto, nome, biografia FROM escritor WHERE escritor.slug='$dado'";
+$select = "SELECT escritor.path as esc_foto, nome, biografia FROM escritor WHERE escritor.slug='$dado'";
 
 if ($resultado = mysqli_query($conexao, $select)) {
     while ($autor = mysqli_fetch_array($resultado)) {
@@ -21,21 +21,20 @@ if ($resultado = mysqli_query($conexao, $select)) {
        <h2>{$autor['nome']}</h2>
       <p>CONTEÚDO: {$autor['biografia']}</p>
 
-       <img src='{$autor['esc_foto']}' alt=''>
+       <img src='../../administrador/autores/{$autor['esc_foto']}' alt=''>
 
         ";
     }
 }
 
 ?>
-
 <?php
-$resenhas = "SELECT resenha.foto_url as res_foto, titulo FROM resenha INNER JOIN escritor ON escritor.id_escritor = resenha.id_escritor WHERE escritor.slug='$dado'";
+$resenhas = "SELECT resenha.path as res_foto, titulo FROM resenha INNER JOIN escritor ON escritor.id_escritor = resenha.id_escritor WHERE escritor.slug='$dado'";
 
 if ($result = mysqli_query($conexao, $resenhas)) {
     while ($box = mysqli_fetch_array($result)) {
         echo "
-        <img src='{$box['res_foto']}' alt=''>
+        <img src='../../administrador/resenha/{$box['res_foto']}' alt=''>
         <p>{$box['titulo']}</p>
 
 </body>

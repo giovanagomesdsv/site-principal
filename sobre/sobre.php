@@ -26,7 +26,7 @@ include "../conexao.php";
                 ar.nome,
                 ar.pseudonimo,
                 ar.email,
-                ar.foto_url,
+                ar.path,
                 ar.pontos,
                 ar.telefone,
                 COUNT(r.id_resenha) AS total_resenhas
@@ -37,13 +37,13 @@ include "../conexao.php";
             ON 
                 ar.id_autor_resenha = r.id_autor_resenha
             GROUP BY 
-                ar.id_autor_resenha, ar.nome, ar.pseudonimo, ar.email, ar.foto_url, ar.pontos ";
+                ar.id_autor_resenha, ar.nome, ar.pseudonimo, ar.email, ar.path, ar.pontos ";
 
         if ($resp = mysqli_query($conexao, $select)) {
             while ($resenhista = mysqli_fetch_array($resp)) {
                 echo "
                   <div>
-                    <img src='{$resenhista['foto_url']}' alt=''>
+                    <img src='../../administrador/resenhistas/{$resenhista['path']}' alt=''>
                     <h3>{$resenhista['pseudonimo']}</h3>
                     <p>Resenhas: {$resenhista['total_resenhas']}</p>
                   </div>

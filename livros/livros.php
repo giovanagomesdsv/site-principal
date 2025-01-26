@@ -88,6 +88,7 @@ include "../conexao.php";
                 echo "
                 <div>
                 <h2><a href='http://localhost/TCC/site-principal/livro-resultado/livro.php?id={$livro['slug']}'>" . htmlspecialchars($livro['titulo']) . "</a></h2>
+                <img src='../../gerenciador-estoque/cadastro de livros/{$livro['path']}' alt=''>
                 <p>{$livro['nome']}</p>
                 <p>Tipo:{$livro['tipo']}</p>
                 <p>{$livro['classificacao_idade']}</p>
@@ -100,5 +101,6 @@ include "../conexao.php";
     </main>
 
 </body>
+
 
 </html>
