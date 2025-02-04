@@ -99,6 +99,8 @@ include "../conexao.php";
         }
         ?>
     </main>
+    <img src="../../gerenciador-estoque/cadastro de livros/img-livro/67a205c1f3b4a.jpg" alt="">
+
 
 </body>
 
