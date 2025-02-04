@@ -86,12 +86,14 @@ include "../conexao.php";
             while ($linha = mysqli_fetch_array($res)) {
                 echo "<div>";
                 echo "<h2><a href='http://localhost/TCC/site-principal/autor-resultado/autor.php?id={$linha['slug']}'>" . htmlspecialchars($linha['nome']) . "</a></h2>";
+                echo "<img src='../../administrador/autores/img-autores/{$linha['path']}' alt=''>";
                 echo "<p>" . substr(htmlspecialchars($linha['biografia']), 0, 100) . "...</p>";
                 echo "</div>";
             }
         }
         ?>
     </main>
+    
 </body>
 
 </html>

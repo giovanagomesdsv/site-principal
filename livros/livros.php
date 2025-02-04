@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "../conexao.php";
 ?>
 <!DOCTYPE html>
@@ -78,28 +78,23 @@ include "../conexao.php";
         </div>
     </section>
 
-        <!--Filtro-->
+    <!--Filtro-->
     <main>
-        <?php 
-        $consulta = "SELECT * FROM livro INNER JOIN parceria ON parceria.cnpj = livro.cnpj";
+        <?php
+        $x = "SELECT * FROM livro";
 
-        if($r = mysqli_query($conexao, $consulta)) {
+        if ($r = mysqli_query($conexao, $x)) {
             while ($livro = mysqli_fetch_array($r)) {
                 echo "
-                <div>
-                <h2><a href='http://localhost/TCC/site-principal/livro-resultado/livro.php?id={$livro['slug']}'>" . htmlspecialchars($livro['titulo']) . "</a></h2>
-                <img src='../../gerenciador-estoque/cadastro de livros/{$livro['path']}' alt=''>
-                <p>{$livro['nome']}</p>
-                <p>Tipo:{$livro['tipo']}</p>
-                <p>{$livro['classificacao_idade']}</p>
-                <p>Estoque:{$livro['estoque']}</p>
-                </div>
-                ";
+        <div>
+        <img src='../../gerenciador-estoque/cadastro de livros/img-livro/{$livro['path']}' alt=''>
+        <p>{$livro['titulo']}</p>
+        </div>
+        ";
             }
         }
         ?>
     </main>
-    <img src="../../gerenciador-estoque/cadastro de livros/img-livro/67a205c1f3b4a.jpg" alt="">
 
 
 </body>
