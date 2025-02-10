@@ -81,21 +81,27 @@ include "../conexao.php";
     <!--Filtro-->
     <main>
         <?php
-        $x = "SELECT * FROM livro";
+        $x = "SELECT livro.path, livro.slug, nome, titulo, preco FROM livro INNER JOIN parceria ON livro.cnpj = parceria.cnpj";
 
         if ($r = mysqli_query($conexao, $x)) {
             while ($livro = mysqli_fetch_array($r)) {
                 echo "
         <div>
+        
         <img src='../../gerenciador-estoque/cadastro de livros/img-livro/{$livro['path']}' alt=''>
-        <p>{$livro['titulo']}</p>
+
+        <p>{$livro['nome']}</p>
+
+        <h2><a href='http://localhost/TCC/site-principal/livro-resultado/livro.php?id={$livro['slug']}'>" . htmlspecialchars($livro['titulo']) . "</a></h2>
+
+        <h3>{$livro['preco']}</h3>
         </div>
         ";
             }
         }
         ?>
     </main>
-
+    <p></p>
 
 </body>
 
