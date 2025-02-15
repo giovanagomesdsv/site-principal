@@ -101,7 +101,6 @@ include "../conexao.php";
         }
         ?>
     </main>
-    <p>mhm,mlj</p>
     
 
 </body>
